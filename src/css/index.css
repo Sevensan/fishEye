@@ -1,0 +1,16 @@
+.nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+}
+.photographer{
+    border: 1px solid red;
+    background-color: green;
+}
+
+
