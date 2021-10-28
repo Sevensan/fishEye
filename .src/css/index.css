@@ -1,0 +1,102 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans&display=swap");
+/* HOME STYLE */
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans&display=swap");
+#content {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  grid-row-gap: 2rem;
+}
+#content h6 {
+  color: #D3573C;
+  font-size: 2.5rem;
+  margin: 0;
+}
+#content .city {
+  color: #901C1C;
+}
+
+.photographer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.photographer .title {
+  color: #D3573C;
+  font-size: 36px;
+}
+
+.photographerMiniature {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.photographer h6, .photographer p {
+  margin: 0.1rem;
+}
+
+/* SINGLE PHOTOGRAPHER STYLE */
+.gridGalery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 2rem;
+}
+.gridGalery img {
+  width: 100%;
+  height: 20rem;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.gridGalery h6 {
+  color: #D3573C;
+}
+.gridGalery p {
+  margin-right: 2rem;
+}
+.gridGalery p::after {
+  content: "";
+  background: url("../img/icons/heart.png");
+  height: 1rem;
+  width: 1rem;
+}
+
+/* GENERAL STYLE */
+body {
+  font-family: "DM Sans";
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 2rem;
+}
+
+.flex {
+  display: flex;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+/*# sourceMappingURL=index.css.map */

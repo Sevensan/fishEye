@@ -1,39 +1,69 @@
 import { getData } from "./getData.js"
+
 try{
   getData().then(result => {
     console.log(result)
-    let photographers = {}
-    const container = document.createElement("div")
-    container.classList.add("container")
-    const main = document.getElementById("content")
-    main.appendChild(container)
-    result.photographers.map(photograph => {
-      photographers[photograph.id] = photograph
-      const listOfPhotographers = () => {
-        const pContainer = document.createElement("div")
-        pContainer.classList.add("photographer"+photograph.id, "photographer")
-        container.appendChild(pContainer)
-        const title = document.createElement("h6")
-        title.innerHTML = photograph.name
-        const city = document.createElement("p")
-        city.innerHTML = photograph.city
-        const country = document.createElement("p")
-        country.innerHTML = photograph.country
-        const price = document.createElement("p")
-        price.innerHTML = photograph.price
-        const img = document.createElement("img")
-        img.src = photograph.portrait
-        pContainer.append(title, city, country, price, img)
-        photograph.tags.forEach(tag => {
-          const tagElem = document.createElement("p")
-          tagElem.innerHTML = "#" + tag
-          pContainer.appendChild(tagElem)
-        })
+    result.photographers.forEach(photographer => {
+      console.log(photographer)
+      const content = document.getElementById("content")
+      if(content){
+        content.appendChild(createDivForPhotographer(photographer))
       }
-      listOfPhotographers()
     })
-    console.log(photographers)
   })
 } catch{
-    console.error(getData())
+  console.error("couldn't get data")
+}
+
+const createDivForPhotographer = (photographer) => {
+  const myDiv = document.createElement("a")
+  myDiv.href=`/photographer.html?id=${photographer.id}`
+  myDiv.appendChild(createPhotographerHeader(photographer))
+  myDiv.appendChild(createPhotographerBody(photographer))
+  myDiv.appendChild(createPhotographerFooter(photographer))
+  return myDiv
+}
+
+const createPhotographerHeader = (photographer) => {
+  const myDiv = document.createElement("div")
+  const img = document.createElement("img")
+  img.src = `/src/img/${photographer.name}/${photographer.portrait}`
+  img.classList.add('photographerMiniature')
+  myDiv.appendChild(img)
+  return myDiv
+}
+
+const createPhotographerBody = (photographer) => {
+  const myDiv = document.createElement("div")
+  // CREATE TITLE
+  const title = document.createElement("h6")
+  title.innerHTML = photographer.name
+
+  // CREATE CITY
+  const city = document.createElement("p")
+  city.classList.add("city")
+  city.innerHTML = photographer.city
+
+  // CREATE TAGLINE
+  const tagline = document.createElement('p')
+  tagline.innerHTML = photographer.tagline
+
+  //INSERT
+  myDiv.append(title, city, tagline)
+
+  return myDiv
+
+}
+
+
+const createPhotographerFooter = (photographer) => {
+  const myDiv = document.createElement("div")
+  myDiv.classList.add("flex")
+
+  photographer.tags.forEach(tag => {
+    const tagElem = document.createElement("p")
+    tagElem.innerHTML = "#" + tag
+    myDiv.appendChild(tagElem)
+  })
+  return myDiv
 }

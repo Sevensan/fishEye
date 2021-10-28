@@ -1,5 +1,26 @@
 {
   "devDependencies": {
     "eslint": "^7.32.0"
-  }
+  },
+  "name": "projet_6",
+  "version": "1.0.0",
+  "description": "projet6",
+  "main": "index.js",
+  "dependencies": {},
+  "scripts": {
+    "sass":"sass --watch ./src/sass/main.scss:.src/css/index.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sevensan/fishEye.git"
+  },
+  "keywords": [
+    "fishEye"
+  ],
+  "author": "nl",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sevensan/fishEye/issues"
+  },
+  "homepage": "https://github.com/Sevensan/fishEye#readme"
 }

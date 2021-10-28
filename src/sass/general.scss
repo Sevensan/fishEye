@@ -1,0 +1,31 @@
+@import './variables.scss';
+
+/* GENERAL STYLE */
+body{
+    font-family:'DM Sans';
+}
+.nav{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 2rem;
+}
+
+.flex{
+  display: flex;
+}
+.justify-content-center{
+  justify-content: center;
+}
+.justify-content-between{
+    justify-content: space-between;
+}
+.align-items-center{
+  align-items: center;
+}
+
+a{
+  text-decoration: none;
+  color: black;
+}
+
