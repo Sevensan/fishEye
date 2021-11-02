@@ -4,6 +4,23 @@
 .singlePhotographerContent{
 
 }
+#filter{
+  background: $primary;
+  width: 8rem;
+  border: none;
+  padding: .5rem 1rem;
+  border-radius: 10px;
+
+  option{
+    text-align: center;
+    border-top: 1px solid white;
+    padding-top: .5rem;
+  }
+
+  p{
+    text-align: center;
+  }
+}
 
 #gridGalery{
   display: grid;
@@ -21,12 +38,18 @@
   }
   p{
     margin-right: 2rem;
+    position: relative;
 
-    &::after{
+    &::before{
       content: "";
-      background: url('../img/icons/heart.png');
+      display: block;
+      background: url('../../src/img/icons/heart.png');
+      background-size: 1rem;
       height: 1rem;
       width: 1rem;
+      position: absolute;
+      top: 3px;
+      right: -20px;
     }
   }
 }

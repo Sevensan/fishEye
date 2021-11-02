@@ -114,33 +114,58 @@ const singlePhotographer = (filter) => {
 }
 let singlePhotographerContent = document.getElementById("singlePhotographerContent")
 let galery = document.getElementById("galery")
-
-// POPULARITE FILTER
-document.getElementById("popuFilter").addEventListener("click", function(){
+const filterSort = document.getElementById("filter")
+filterSort.addEventListener("change", function(){
+  console.log(filterSort.value)
   let firstContent = document.getElementById("firstContent")
   let gridGalery = document.getElementById("gridGalery")
-  singlePhotographerContent.removeChild(firstContent)
-  galery.removeChild(gridGalery)
-  singlePhotographer('likes')
+  switch(filterSort.value){
+    case 'likes' :
+    singlePhotographerContent.removeChild(firstContent)
+    galery.removeChild(gridGalery)
+    singlePhotographer('likes')
+    break
+    case 'date' :
+    // let firstContent = document.getElementById("firstContent")
+    // let gridGalery = document.getElementById("gridGalery")
+    singlePhotographerContent.removeChild(firstContent)
+    galery.removeChild(gridGalery)
+    singlePhotographer('date')
+    break
+    case 'alttext' :
+    // let firstContent = document.getElementById("firstContent")
+    // let gridGalery = document.getElementById("gridGalery")
+    singlePhotographerContent.removeChild(firstContent)
+    galery.removeChild(gridGalery)
+    singlePhotographer('alttext')
+  }
 })
+// // POPULARITE FILTER
+// document.getElementById("popuFilter").addEventListener("click", function(){
+//   let firstContent = document.getElementById("firstContent")
+//   let gridGalery = document.getElementById("gridGalery")
+//   singlePhotographerContent.removeChild(firstContent)
+//   galery.removeChild(gridGalery)
+//   singlePhotographer('likes')
+// })
 
-// DATE FILTER
-document.getElementById("dateFilter").addEventListener("click", function(){
-  let firstContent = document.getElementById("firstContent")
-  let gridGalery = document.getElementById("gridGalery")
-  singlePhotographerContent.removeChild(firstContent)
-  galery.removeChild(gridGalery)
-  singlePhotographer('date')
-})
+// // DATE FILTER
+// document.getElementById("dateFilter").addEventListener("click", function(){
+//   let firstContent = document.getElementById("firstContent")
+//   let gridGalery = document.getElementById("gridGalery")
+//   singlePhotographerContent.removeChild(firstContent)
+//   galery.removeChild(gridGalery)
+//   singlePhotographer('date')
+// })
 
-// TITLE FILTER
-document.getElementById("titleFilter").addEventListener("click", function(){
-  let firstContent = document.getElementById("firstContent")
-  let gridGalery = document.getElementById("gridGalery")
-  singlePhotographerContent.removeChild(firstContent)
-  galery.removeChild(gridGalery)
-  singlePhotographer('alttext')
-})
+// // TITLE FILTER
+// document.getElementById("titleFilter").addEventListener("click", function(){
+//   let firstContent = document.getElementById("firstContent")
+//   let gridGalery = document.getElementById("gridGalery")
+//   singlePhotographerContent.removeChild(firstContent)
+//   galery.removeChild(gridGalery)
+//   singlePhotographer('alttext')
+// })
 
 console.log(filter)
 
