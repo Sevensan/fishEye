@@ -15,22 +15,39 @@
         <div class="nav__tags"></div>
         <div class="nav__photographers">Nos photographes</div>
     </nav>
-    <!-- <div id="filter">
-        <p id="popuFilter">Popularité</p>
-        <p id="dateFilter">Date</p>
-        <p id="titleFilter">Titre</p>
-    </div> -->
-    <select name="" id="filter">
+    <div>
+      Trier par
+      <select name="" id="filter">
         <option id="popuFilter" value="likes">Popularité</option>
         <option id="dateFilter" value="date">Date</option>
         <option id="titleFilter" value="alttext">Titre</option>
-    </select>
+      </select>
+    </div>
     <main>
       <div id="singlePhotographerContent"></div>
       <div id="galery"></div>
     </main>
     <div id="carouselContainer">
       <span id="carouselHider"></span>
+    </div>
+
+    <div id="modal">
+      <div class="modalContainer">
+          <h5>Contactez-moi</h5>
+          <p id="photographerName"></p>
+          <form action="">
+            <label for="">Prénom</label>
+            <input type="text">
+            <label for="">Nom</label>
+            <input type="text">
+            <label for="">Email</label>
+            <input type="email">
+            <label for="">Votre message</label>
+            <input type="textarea">
+            <button>Envoyer</button>
+          </form>
+          <span id="closeModal">X</span>
+      </div>
     </div>
     <script type="module" src="./src/js/index.js"></script>
 </body>

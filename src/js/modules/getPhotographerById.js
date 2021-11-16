@@ -1,4 +1,4 @@
-import { filterData } from "./Filter.js"
+import { filterData } from "./FilterMedia.js"
 
 export const getPhotographerById = async (id) => {
     let getPhotographer = null

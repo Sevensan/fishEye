@@ -1,4 +1,4 @@
-import { filterData } from "./Filter.js"
+import { filterData } from "./FilterMedia.js"
 import {displayPhotograph} from "./displayPhotograph.js"
 import {getPhotographerById} from "./getPhotographerById.js"
 window.filterData = filterData
@@ -14,20 +14,33 @@ const singlePhotographer = (filter) => {
       myDiv.append(
         createHeaderPhotographer(photographer),
         createBodyPhotographer(photographer),
-        createFooterPhotographer(photographer)
+        createContact(photographer)
         )
         return myDiv
       }
       const createHeaderPhotographer = (photographer) => {
         const myDiv = document.createElement("div")
+        myDiv.classList.add("imgContainer")
         const img = document.createElement("img")
         img.src = `/src/img/${photographer.name}/${photographer.portrait}`
         img.classList.add('photographerMiniature')
         myDiv.appendChild(img)
         return myDiv
       }
+      const createContact = (photographer) => {
+        document.getElementById("photographerName").innerHTML = photographer.name
+        // CREATE CONTACT BUTTON
+        const button = document.createElement("a")
+        button.classList.add("btn-contact")
+        button.innerText = "Contactez-moi"
+        button.addEventListener("click",function(){
+          document.getElementById("modal").style.display = "block"
+        })
+        return button
+      }
       const createBodyPhotographer = (photographer) => {
         const myDiv = document.createElement("div")
+        myDiv.classList.add("textContainer")
         // CREATE TITLE
         const title = document.createElement("h6")
         title.innerHTML = photographer.name
@@ -37,22 +50,13 @@ const singlePhotographer = (filter) => {
         // CREATE TAGLINE
         const tagline = document.createElement('p')
         tagline.innerHTML = photographer.tagline
+
         //INSERT
         myDiv.append(title, city, tagline)
         return myDiv
       }
-      const createFooterPhotographer = (photographer) => {
-        const myDiv = document.createElement("div")
-        myDiv.classList.add("flex")
-
-        photographer.tags.forEach(tag => {
-          const tagElem = document.createElement("p")
-          tagElem.innerHTML = "#" + tag
-          myDiv.appendChild(tagElem)
-        })
-        return myDiv
-      }
       const createGalery = (medias) => {
+        console.log(medias)
         const myDiv = document.createElement("div")
         myDiv.setAttribute("id", "gridGalery")
         medias.forEach(media => {
@@ -82,7 +86,7 @@ const singlePhotographer = (filter) => {
           underImg.append(title, fav)
           imgDiv.appendChild(underImg)
           imgDiv.addEventListener("click", function(){
-            displayPhotograph(media)
+            displayPhotograph(media, medias)
           })
           myDiv.appendChild(imgDiv)
         })
@@ -123,6 +127,11 @@ filterSort.addEventListener("change", function(){
     singlePhotographer('alttext')
   }
 })
+  const modal = document.getElementById("modal")
+  const closeModal = document.getElementById("closeModal")
+  closeModal.addEventListener("click", function(){
+    modal.style.display = "none"
+  })
 try{
   singlePhotographer(filter)
 } catch(error){

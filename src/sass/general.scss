@@ -29,3 +29,16 @@ a{
   color: black;
 }
 
+@media screen and (max-width: 768px){
+  .nav{
+    &__logo{
+      img{
+        width: 8rem;
+      }
+    }
+    &__photographers{
+      font-size: 1.2rem;
+    }
+  }
+}
+

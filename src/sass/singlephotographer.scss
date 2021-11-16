@@ -10,6 +10,7 @@
   border: none;
   padding: .5rem 1rem;
   border-radius: 10px;
+  color: white;
 
   option{
     text-align: center;
@@ -55,18 +56,19 @@
 }
 
 #carouselContainer{
-  display: none;
+  display: flex;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   img{
     padding: 1rem;
-    height: 90vh;
-    width: 90vw;
+    height: auto;
+    width: 70vw;
     object-fit: contain;
   }
   #carouselHider{
+    display: none;
     content: "";
     width: 100vw;
     height: 100vh;
@@ -77,5 +79,90 @@
     left: 0;
     z-index: 0;
   }
+}
 
+#firstContent{
+  border-radius: 5px;
+  background: #FAFAFA;
+  padding: 1rem;
+  margin: 1rem 0;
+  h6{
+    font-size: 2rem;
+    color: $secondary;
+    margin: 0;
+  }
+  .imgContainer{
+    grid-area: img;
+  }
+  .textContainer{
+    grid-area: text;
+  }
+  .btn-contact{
+    grid-area: contact;
+    background: $primary;
+    color: white;
+    border-radius: 5px;
+    padding: .5rem 1rem;
+    width: 9rem;
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+#modal{
+  background: #DB8876;
+  position: fixed;
+  top: 150px;
+  left: calc(50% - (275px/2));
+  right: auto;
+  width: 275px;
+  display: none;
+  padding: 1rem .5rem;
+  box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.73);
+
+  .modalContainer{
+    position: relative;
+    h5{
+      margin: 0;
+    }
+    h5, #photographerName{
+      font-size: 2rem;
+    }
+    form{
+      display: flex;
+      flex-direction: column;
+    }
+    #closeModal{
+      color: white;
+      font-size: 2rem;
+      position: absolute;
+      top: -10px;
+      right: 0;
+    }
+    button{
+      border: none;
+      background: $primary;
+      color: white;
+      border-radius: 5px;
+      padding: .5rem 1rem;
+      margin: 1rem 0;
+      width: 7rem;
+    }
+  }
+
+}
+
+@media screen and (max-width: 768px){
+  #gridGalery{
+    grid-template-columns: repeat(1,1fr);
+  }
+}
+@media screen and (min-width : 769px){
+  #firstContent{
+    display: grid;
+    grid-template-areas:
+    "text contact img";
+  }
 }
