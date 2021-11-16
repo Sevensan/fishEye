@@ -1,10 +1,7 @@
 import { getData } from "./getData.js"
-
 export const filterData = async (filter) => {
     let data = {}
-    console.log(filter)
     await getData().then(result =>{
-      console.log(result)
       switch (filter) {
         case 'likes' :
           data.media = result.media.sort(function(a,b){
@@ -27,6 +24,5 @@ export const filterData = async (filter) => {
         default: data = result
       }
     })
-    console.log(data)
     return data
 }
