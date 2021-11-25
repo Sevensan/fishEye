@@ -2,20 +2,25 @@ import { filterData } from "./FilterMedia.js"
 import {displayPhotograph} from "./displayPhotograph.js"
 import {getPhotographerById} from "./getPhotographerById.js"
 window.filterData = filterData
+// set filter select value
 let filter = null
+//start photographer page content
 const singlePhotographer = (filter) => {
   filterData(filter).then(result => {
     // GET URL ID
     const url = window.location.href
     const urlId = url.substring(url.lastIndexOf('=')+1)
+
+    // create photographer section
     const createDivForPhotographer = (photographer) => {
       const myDiv = document.createElement("div")
       myDiv.setAttribute("id", "firstContent")
       myDiv.append(
         createHeaderPhotographer(photographer),
         createBodyPhotographer(photographer),
-        createContact(photographer)
-        )
+        createContact(photographer),
+      )
+      createBottomModal(photographer)
         return myDiv
       }
       const createHeaderPhotographer = (photographer) => {
@@ -37,6 +42,12 @@ const singlePhotographer = (filter) => {
           document.getElementById("modal").style.display = "block"
         })
         return button
+      }
+      const createBottomModal = (photographer) => {
+        const bottomModalLikes = document.getElementById("modalBottom__likes")
+        const bottomModalPrice = document.getElementById("modalBottom__price")
+        bottomModalLikes.innerHTML = photographer.id
+        bottomModalPrice.innerHTML = `${photographer.price}€ / jour`
       }
       const createBodyPhotographer = (photographer) => {
         const myDiv = document.createElement("div")
@@ -132,6 +143,7 @@ filterSort.addEventListener("change", function(){
   closeModal.addEventListener("click", function(){
     modal.style.display = "none"
   })
+
 try{
   singlePhotographer(filter)
 } catch(error){

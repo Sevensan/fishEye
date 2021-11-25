@@ -42,9 +42,20 @@
     position: relative;
 
     &::before{
+      background: url('../../src/img/icons/heart-full.png');
       content: "";
       display: block;
+      background-size: 1rem;
+      height: 1rem;
+      width: 1rem;
+      position: absolute;
+      top: 3px;
+      right: -20px;
+    }
+    &::after{
       background: url('../../src/img/icons/heart.png');
+      content: "";
+      display: block;
       background-size: 1rem;
       height: 1rem;
       width: 1rem;
@@ -58,6 +69,7 @@
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 1;
   height: 100vh;
   width: 100vw;
   background: white;
@@ -188,6 +200,35 @@
     }
   }
 
+}
+#modalBottom{
+  background: $secondary;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  right: 10px;
+  z-index: 0;
+  padding: 0 1rem;
+  font-weight: bold;
+  &__likes{
+    padding-right: 1rem;
+    display: flex;
+    align-items: center;
+    &::after{
+      content: '';
+      background-image: url("../../src/img/icons/heart-full.png");
+      background-size: 1rem;
+      filter: brightness(0);
+      height: 1rem;
+      width: 1rem;
+      display: block;
+      margin-left: .2rem;
+      image-rendering: inherit;
+    }
+  }
+  &__price{
+    padding: 0 .5rem;
+  }
 }
 
 @media screen and (max-width: 768px){
