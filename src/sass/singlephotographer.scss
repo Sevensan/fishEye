@@ -55,32 +55,47 @@
   }
 }
 
-#carouselContainer{
+#carouselImages{
   display: flex;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
+  transition: all .5s;
   img{
     padding: 1rem;
     height: auto;
     width: 70vw;
     object-fit: contain;
   }
-  #carouselHider{
-    display: none;
-    content: "";
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0,0,0,.2);
-    background-size: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 0;
-  }
 }
-
+#carouselHider{
+  display: none;
+  content: "";
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,.2);
+  background-size: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+#toLeft, #toRight{
+  position: fixed;
+  top: 45vh;
+  font-size: 3rem;
+  font-weight: bold;
+  background: $primary;
+  padding: 1rem .5rem;
+  z-index: 2;
+}
+#toLeft{
+ left: 1vw;
+}
+#toRight{
+  right: 1vw;
+}
 #firstContent{
   border-radius: 5px;
   background: #FAFAFA;

@@ -2,6 +2,9 @@ import { filterData } from "./FilterMedia.js"
 import { getData } from "./getData.js"
 import {getPhotographerById} from "./getPhotographerById.js"
 window.filterData = filterData
+
+const carouselHider = document.getElementById("carouselHider")
+
 export const displayPhotograph = async (media, medias) => {
   await filterData()
   const carouselContainer = document.getElementById("carouselContainer")
@@ -11,11 +14,16 @@ export const displayPhotograph = async (media, medias) => {
   listOfMedias.push(media)
   medias.map(item => {
     console.log(item)
+    if(item.id !== media.id){
+      listOfMedias.push(item)
+    }
   })
   console.log(listOfMedias)
+  const carouselImages = document.getElementById("carouselImages")
   listOfMedias.map(item => {
     if(item.image){
       const img = document.createElement("img")
+      img.style.zIndex = 1
       img.classList.add("imgCarousel")
       getPhotographerById(item.photographerId).then(resultat => {
         let src = `src/img/${resultat.name}/${item.image}`
@@ -23,7 +31,8 @@ export const displayPhotograph = async (media, medias) => {
         img.src = src
       })
       console.log(img)
-      carouselContainer.appendChild(img)
+      carouselImages.appendChild(img)
+      carouselContainer.appendChild(carouselImages)
       console.log(carouselContainer)
 
       if (item.id === media.id){
@@ -44,8 +53,6 @@ export const displayPhotograph = async (media, medias) => {
   // container.appendChild(img)
   // carouselContainer.appendChild(container)
   // carouselContainer.style.display = "block"
+  carouselHider.style.display = "block"
 }
 
-document.getElementById("carouselHider").addEventListener("click", function(){
-    document.getElementById("carouselContainer").style.display = "none"
-})

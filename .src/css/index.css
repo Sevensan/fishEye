@@ -106,20 +106,22 @@
   right: -20px;
 }
 
-#carouselContainer {
+#carouselImages {
   display: flex;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
+  transition: all 0.5s;
 }
-#carouselContainer img {
+#carouselImages img {
   padding: 1rem;
   height: auto;
   width: 70vw;
   object-fit: contain;
 }
-#carouselContainer #carouselHider {
+
+#carouselHider {
   display: none;
   content: "";
   width: 100vw;
@@ -130,6 +132,24 @@
   top: 0;
   left: 0;
   z-index: 0;
+}
+
+#toLeft, #toRight {
+  position: fixed;
+  top: 45vh;
+  font-size: 3rem;
+  font-weight: bold;
+  background: #901C1C;
+  padding: 1rem 0.5rem;
+  z-index: 2;
+}
+
+#toLeft {
+  left: 1vw;
+}
+
+#toRight {
+  right: 1vw;
 }
 
 #firstContent {
