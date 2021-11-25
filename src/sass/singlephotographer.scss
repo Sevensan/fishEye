@@ -54,47 +54,68 @@
     }
   }
 }
-
-#carouselImages{
-  display: flex;
+#carouselContainer{
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  transition: all .5s;
-  img{
-    padding: 1rem;
-    height: auto;
-    width: 70vw;
-    object-fit: contain;
-  }
-}
-#carouselHider{
-  display: none;
-  content: "";
-  width: 100vw;
   height: 100vh;
-  background: rgba(0,0,0,.2);
-  background-size: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 0;
-}
-#toLeft, #toRight{
-  position: fixed;
-  top: 45vh;
-  font-size: 3rem;
-  font-weight: bold;
-  background: $primary;
-  padding: 1rem .5rem;
-  z-index: 2;
-}
-#toLeft{
- left: 1vw;
-}
-#toRight{
-  right: 1vw;
+  width: 100vw;
+  background: white;
+  display: none;
+  align-items: center;
+  #carouselImages{
+    display: flex;
+    transition: all .5s;
+    grid-area: images;
+    img{
+      margin: 2rem 10vw 0 10vw;
+      max-height: 100vh;
+      width: 80vw;
+      object-fit: contain;
+    }
+    .carousel__navigation{
+      position: relative;
+    }
+  }
+  // #carouselHider{
+  //   display: none;
+  //   content: "";
+  //   width: 100vw;
+  //   height: 100vh;
+  //   background: white;
+  //   background-size: 100%;
+  //   position: absolute;
+  //   top: 0;
+  //   left: 0;
+  //   z-index: 0;
+  // }
+  #toLeft, #toRight, #closeButton{
+    position: absolute;
+    font-size: 3rem;
+    font-weight: bold;
+    background: $primary;
+    padding: 1rem .5rem;
+    z-index: 2;
+  }
+  #toLeft{
+    left: 0;
+    @media screen and (min-width : 1025px){
+      left: 2vw;
+    }
+  }
+  #toRight{
+    right: 0;
+    @media screen and (min-width : 1025px){
+      right: 2vw;
+    }
+  }
+  #closeButton{
+    top: 0;
+    right: 0;
+    @media screen and (min-width : 1025px){
+      right: 2vw;
+    }
+  }
 }
 #firstContent{
   border-radius: 5px;

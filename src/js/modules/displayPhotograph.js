@@ -1,9 +1,6 @@
 import { filterData } from "./FilterMedia.js"
-import { getData } from "./getData.js"
 import {getPhotographerById} from "./getPhotographerById.js"
 window.filterData = filterData
-
-const carouselHider = document.getElementById("carouselHider")
 
 export const displayPhotograph = async (media, medias) => {
   await filterData()
@@ -13,7 +10,6 @@ export const displayPhotograph = async (media, medias) => {
   let listOfMedias = []
   listOfMedias.push(media)
   medias.map(item => {
-    console.log(item)
     if(item.id !== media.id){
       listOfMedias.push(item)
     }
@@ -27,32 +23,16 @@ export const displayPhotograph = async (media, medias) => {
       img.classList.add("imgCarousel")
       getPhotographerById(item.photographerId).then(resultat => {
         let src = `src/img/${resultat.name}/${item.image}`
-        console.log(src)
         img.src = src
       })
-      console.log(img)
       carouselImages.appendChild(img)
       carouselContainer.appendChild(carouselImages)
-      console.log(carouselContainer)
 
       if (item.id === media.id){
         console.log(item)
       }
     }
   })
-  // const carousel = document.getElementById("carousel")
-  // if(carousel !== null){
-  //   carouselContainer.removeChild(carousel)
-  // }
-  // let container = document.createElement("div")
-  // container.setAttribute("id", "carousel")
-  // let img = document.createElement("img")
-  // getPhotographerById(media.photographerId).then(resultat => {
-  //   img.src = `src/img/${resultat.name}/${media.image}`
-  // })
-  // container.appendChild(img)
-  // carouselContainer.appendChild(container)
-  // carouselContainer.style.display = "block"
-  carouselHider.style.display = "block"
+  carouselContainer.style.display = "flex"
 }
 

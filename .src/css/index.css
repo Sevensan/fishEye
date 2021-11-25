@@ -106,50 +106,62 @@
   right: -20px;
 }
 
-#carouselImages {
-  display: flex;
+#carouselContainer {
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  transition: all 0.5s;
+  height: 100vh;
+  width: 100vw;
+  background: white;
+  display: none;
+  align-items: center;
 }
-#carouselImages img {
-  padding: 1rem;
-  height: auto;
-  width: 70vw;
+#carouselContainer #carouselImages {
+  display: flex;
+  transition: all 0.5s;
+  grid-area: images;
+}
+#carouselContainer #carouselImages img {
+  margin: 2rem 10vw 0 10vw;
+  max-height: 100vh;
+  width: 80vw;
   object-fit: contain;
 }
-
-#carouselHider {
-  display: none;
-  content: "";
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.2);
-  background-size: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 0;
+#carouselContainer #carouselImages .carousel__navigation {
+  position: relative;
 }
-
-#toLeft, #toRight {
-  position: fixed;
-  top: 45vh;
+#carouselContainer #toLeft, #carouselContainer #toRight, #carouselContainer #closeButton {
+  position: absolute;
   font-size: 3rem;
   font-weight: bold;
   background: #901C1C;
   padding: 1rem 0.5rem;
   z-index: 2;
 }
-
-#toLeft {
-  left: 1vw;
+#carouselContainer #toLeft {
+  left: 0;
 }
-
-#toRight {
-  right: 1vw;
+@media screen and (min-width: 1025px) {
+  #carouselContainer #toLeft {
+    left: 2vw;
+  }
+}
+#carouselContainer #toRight {
+  right: 0;
+}
+@media screen and (min-width: 1025px) {
+  #carouselContainer #toRight {
+    right: 2vw;
+  }
+}
+#carouselContainer #closeButton {
+  top: 0;
+  right: 0;
+}
+@media screen and (min-width: 1025px) {
+  #carouselContainer #closeButton {
+    right: 2vw;
+  }
 }
 
 #firstContent {
