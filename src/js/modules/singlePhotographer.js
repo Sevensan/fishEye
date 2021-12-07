@@ -28,6 +28,7 @@ const singlePhotographer = (filter) => {
         myDiv.classList.add("imgContainer")
         const img = document.createElement("img")
         img.src = `/src/img/${photographer.name}/${photographer.portrait}`
+        img.alt = photographer.name
         img.classList.add('photographerMiniature')
         myDiv.appendChild(img)
         return myDiv
@@ -53,7 +54,7 @@ const singlePhotographer = (filter) => {
         const myDiv = document.createElement("div")
         myDiv.classList.add("textContainer")
         // CREATE TITLE
-        const title = document.createElement("h6")
+        const title = document.createElement("h2")
         title.innerHTML = photographer.name
         // CREATE CITY
         const city = document.createElement("p")
@@ -76,12 +77,13 @@ const singlePhotographer = (filter) => {
           const img = document.createElement("img")
           const video = document.createElement("video")
           const underImg = document.createElement("div")
-          const title = document.createElement("h6")
+          const title = document.createElement("h3")
           const fav = document.createElement("p")
           underImg.classList.add("flex", "justify-content-between", "align-items-center")
           if(media.video){
             getPhotographerById(media.photographerId).then(resultat => {
               video.src = `src/img/${resultat.name}/${media.video}`
+              video.title = media.alttext
             })
             video.setAttribute("controls", true)
             imgDiv.appendChild(video)

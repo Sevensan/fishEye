@@ -18,8 +18,7 @@ const getPhotographersProfile = (filter) => {
 const createDivForPhotographer = (photographer) => {
   const container = document.createElement("div")
   container.classList.add("container")
-  const myDiv = document.createElement("a")
-  myDiv.href=`/photographer.html?id=${photographer.id}`
+  const myDiv = document.createElement("div")
   myDiv.appendChild(createPhotographerHeader(photographer))
   myDiv.appendChild(createPhotographerBody(photographer))
   container.appendChild(myDiv)
@@ -31,13 +30,15 @@ const createPhotographerHeader = (photographer) => {
   const img = document.createElement("img")
   img.src = `/src/img/${photographer.name}/${photographer.portrait}`
   img.classList.add('photographerMiniature')
+  img.alt = photographer.name
   myDiv.appendChild(img)
   return myDiv
 }
 const createPhotographerBody = (photographer) => {
   const myDiv = document.createElement("div")
   // CREATE TITLE
-  const title = document.createElement("h6")
+  const title = document.createElement("a")
+  title.href=`/photographer.html?id=${photographer.id}`
   title.innerHTML = photographer.name
 
   // CREATE CITY

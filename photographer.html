@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,56 +8,61 @@
     <title>photographer</title>
 </head>
 <body>
-    <nav class="nav">
+    <nav class="nav" role="navigation">
         <a class="nav__logo" href="index.html">
-            <img src="./src/img/logo/logoFishEye.png" alt="">
+            <img src="./src/img/logo/logoFishEye.png" alt="Fisheye Home page">
         </a>
         <div class="nav__tags"></div>
-        <div class="nav__photographers">Nos photographes</div>
+        <h1 class="nav__photographers">Nos photographes</h1>
     </nav>
-    <div>
-      Trier par
-      <select name="" id="filter">
-        <option id="popuFilter" value="likes">Popularité</option>
-        <option id="dateFilter" value="date">Date</option>
-        <option id="titleFilter" value="alttext">Titre</option>
-      </select>
-    </div>
     <main>
+      <section>
+        <label for="filter">Trier par</label>
+        <select aria-label="filter" name="filter" id="filter">
+          <option id="popuFilter" value="likes">Popularité</option>
+          <option id="dateFilter" value="date">Date</option>
+          <option id="titleFilter" value="alttext">Titre</option>
+        </select>
+      </section>
       <div id="singlePhotographerContent"></div>
       <div id="galery"></div>
     </main>
-    <div id="carouselContainer">
-      <div class="carousel__navigation">
-        <span id="toLeft"> < </span>
-        <span id="toRight"> > </span>
-        <span id="closeButton">X</span>
+    <section>
+      <div id="carouselContainer">
+        <div class="carousel__navigation">
+          <span id="toLeft"> &lt; </span>
+          <span id="toRight"> > </span>
+          <span id="closeButton">X</span>
+        </div>
       </div>
-      <!-- <span id="carouselHider"></span> -->
+    </section>
+    <section>
       <div id="carouselImages"></div>
-    </div>
-    <div id="modalBottom">
-      <p id="modalBottom__likes"></p>
-      <p id="modalBottom__price"></p>
-    </div>
-    <div id="modal">
-      <div class="modalContainer">
-          <h5>Contactez-moi</h5>
-          <p id="photographerName"></p>
-          <form action="">
-            <label for="">Prénom</label>
-            <input type="text">
-            <label for="">Nom</label>
-            <input type="text">
-            <label for="">Email</label>
-            <input type="email">
-            <label for="">Votre message</label>
-            <input type="textarea">
-            <button>Envoyer</button>
-          </form>
-          <span id="closeModal">X</span>
+      <div id="modalBottom">
+        <p id="modalBottom__likes"></p>
+        <p id="modalBottom__price"></p>
       </div>
-    </div>
+    </section>
+    <section>
+      <div id="modal">
+        <div class="modalContainer">
+            <h5>Contactez-moi</h5>
+            <p id="photographerName"></p>
+            <form action="./index.html" method="post">
+              <label for="prenom">Prénom</label>
+              <input type="text" id="prenom">
+              <label for="nom">Nom</label>
+              <input type="text" id="nom">
+              <label for="email">Email</label>
+              <input type="email" id="email">
+              <label for="message">Votre message</label>
+              <textarea id="message"></textarea>
+              <button>Envoyer</button>
+            </form>
+            <span id="closeModal">X</span>
+        </div>
+      </div>
+    </section>
     <script type="module" src="./src/js/index.js"></script>
 </body>
 </html>

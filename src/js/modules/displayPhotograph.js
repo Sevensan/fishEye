@@ -24,6 +24,7 @@ export const displayPhotograph = async (media, medias) => {
       getPhotographerById(item.photographerId).then(resultat => {
         let src = `src/img/${resultat.name}/${item.image}`
         img.src = src
+        img.alt = resultat.name
       })
       carouselImages.appendChild(img)
       carouselContainer.appendChild(carouselImages)
