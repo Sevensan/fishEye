@@ -65,15 +65,13 @@ closeButton.addEventListener('click', function () {
 
 
 document.addEventListener('keydown',function(e){
-  console.log(e.key)
-  console.log(e.keyCode)
-  console.log(e.code)
   switch(e.keyCode){
     case 37: toLeftNav()
     break
     case 39: toRightNav()
     break
     case 27: closeGalery()
+    break
   }
 })
 closeButton.addEventListener('keypress', function (e) {

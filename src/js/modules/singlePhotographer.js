@@ -4,6 +4,7 @@ import { getPhotographerById } from './getPhotographerById.js'
 window.filterData = filterData
 // set filter select value
 const filter = null
+const modal = document.getElementById('modal')
 // start photographer page content
 const singlePhotographer = (filter) => {
   filterData(filter).then(result => {
@@ -44,8 +45,9 @@ const singlePhotographer = (filter) => {
       button.classList.add('btn-contact')
       button.innerText = 'Contactez-moi'
       button.addEventListener('click', function () {
-        document.getElementById('modal').style.display = 'block'
-        document.getElementById('modal').setAttribute('aria-hidden','false')
+        modal.style.display = 'block'
+        modal.setAttribute('aria-hidden','false')
+        document.getElementById('prenom').focus()
       })
       return button
     }
@@ -162,11 +164,20 @@ filterSort.addEventListener('change', function () {
       singlePhotographer('alttext')
   }
 })
-const modal = document.getElementById('modal')
-const closeModal = document.getElementById('closeModal')
-closeModal.addEventListener('click', function () {
+const closeContactModal = () => {
   modal.style.display = 'none'
   modal.setAttribute('aria-hidden','true')
+}
+
+const closeModal = document.getElementById('closeModal')
+closeModal.addEventListener('click', function () {
+  closeContactModal()
+})
+document.addEventListener('keydown',function(e){
+  switch(e.keyCode){
+    case 27: closeContactModal()
+    break
+  }
 })
 
 try {
