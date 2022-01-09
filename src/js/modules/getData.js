@@ -1,3 +1,3 @@
 export const getData = () => {
-    return fetch("./src/data/data.json").then(data => data.json())
+  return fetch('./src/data/data.json').then(data => data.json())
 }

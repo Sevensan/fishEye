@@ -8,58 +8,58 @@
     <title>photographer</title>
 </head>
 <body>
-    <nav class="nav" role="navigation">
-        <a class="nav__logo" href="index.html">
-            <img src="./src/img/logo/logoFishEye.png" alt="Fisheye Home page">
+    <nav class="nav" role="navigation" aria-label="main navigation">
+        <a class="nav__logo" role="link" aria-label="logo" href="index.html">
+            <img role="img" src="./src/img/logo/logoFishEye.png" alt="Fisheye Home page">
         </a>
         <div class="nav__tags"></div>
         <h1 class="nav__photographers">Nos photographes</h1>
     </nav>
-    <main>
-      <section>
+    <main role="main">
+      <section role="region">
         <label for="filter">Trier par</label>
-        <select aria-label="filter" name="filter" id="filter">
-          <option id="popuFilter" value="likes">Popularité</option>
-          <option id="dateFilter" value="date">Date</option>
-          <option id="titleFilter" value="alttext">Titre</option>
+        <select aria-label="filter" role="list" name="filter" id="filter">
+          <option id="popuFilter" role="listitem" value="likes">Popularité</option>
+          <option id="dateFilter" role="listitem" value="date">Date</option>
+          <option id="titleFilter" role="listitem" value="alttext">Titre</option>
         </select>
       </section>
       <div id="singlePhotographerContent"></div>
-      <div id="galery"></div>
+      <div id="galery" aria-label="galery"></div>
     </main>
-    <section>
-      <div id="carouselContainer">
+    <section role="region">
+      <div id="carouselContainer" aria-hidden="true">
+        <div id="carouselImages"></div>
         <div class="carousel__navigation">
-          <span id="toLeft"> &lt; </span>
-          <span id="toRight"> > </span>
-          <span id="closeButton">X</span>
+          <span id="toLeft" role="navigation" aria-label="Previous slide"> &lt; </span>
+          <span id="toRight" role="navigation" aria-label="Next slide"> > </span>
+          <span id="closeButton" role="navigation" aria-label="Close Slide">X</span>
         </div>
       </div>
     </section>
-    <section>
-      <div id="carouselImages"></div>
-      <div id="modalBottom">
-        <p id="modalBottom__likes"></p>
-        <p id="modalBottom__price"></p>
+    <section role="region">
+      <div id="modalBottom" aria-label="modal with price and likes">
+        <p id="modalBottom__likes" role="text"></p>
+        <p id="modalBottom__price" role="text"></p>
       </div>
     </section>
-    <section>
-      <div id="modal">
-        <div class="modalContainer">
-            <h5>Contactez-moi</h5>
+    <section role="region">
+      <div role="group" aria-label="contact form" id="modal" aria-hidden="true">
+        <div class="modalContainer" role="dialog" aria-labelledby="contactTitle">
+            <h5 id="contactTitle">Contactez-moi</h5>
             <p id="photographerName"></p>
-            <form action="./index.html" method="post">
+            <form role="form" action="./index.html" method="post">
               <label for="prenom">Prénom</label>
-              <input type="text" id="prenom">
+              <input role="textbox" type="text" id="prenom" required>
               <label for="nom">Nom</label>
-              <input type="text" id="nom">
+              <input role="textbox" type="text" id="nom" required>
               <label for="email">Email</label>
-              <input type="email" id="email">
-              <label for="message">Votre message</label>
-              <textarea id="message"></textarea>
-              <button>Envoyer</button>
+              <input role="textbox" type="email" id="email" required>
+              <label for="message" required>Votre message</label>
+              <textarea role="textbox" id="message"></textarea>
+              <button role="button" aria-label="form validation">Envoyer</button>
             </form>
-            <span id="closeModal">X</span>
+            <span id="closeModal" role="navigation" aria-label="close form">X</span>
         </div>
       </div>
     </section>

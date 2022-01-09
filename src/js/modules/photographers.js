@@ -1,14 +1,14 @@
 // import { getData } from "./getData.js"
-import { filterByTag} from "./filterByTag.js"
-let filter = null
-const content = document.getElementById("content")
+import { filterByTag } from './filterByTag.js'
+const filter = null
+const content = document.getElementById('content')
 
 const getPhotographersProfile = (filter) => {
   filterByTag(filter).then(result => {
-    const myDiv = document.createElement("div")
-    myDiv.setAttribute("id","gridPhotographersProfiles")
+    const myDiv = document.createElement('div')
+    myDiv.setAttribute('id', 'gridPhotographersProfiles')
     result.photographers.forEach(photographer => {
-      if(content){
+      if (content) {
         myDiv.appendChild(createDivForPhotographer(photographer))
         content.appendChild(myDiv)
       }
@@ -16,9 +16,9 @@ const getPhotographersProfile = (filter) => {
   })
 }
 const createDivForPhotographer = (photographer) => {
-  const container = document.createElement("div")
-  container.classList.add("container")
-  const myDiv = document.createElement("div")
+  const container = document.createElement('div')
+  container.classList.add('container')
+  const myDiv = document.createElement('div')
   myDiv.appendChild(createPhotographerHeader(photographer))
   myDiv.appendChild(createPhotographerBody(photographer))
   container.appendChild(myDiv)
@@ -26,8 +26,9 @@ const createDivForPhotographer = (photographer) => {
   return container
 }
 const createPhotographerHeader = (photographer) => {
-  const myDiv = document.createElement("div")
-  const img = document.createElement("img")
+  const myDiv = document.createElement('div')
+  const img = document.createElement('img')
+  img.setAttribute('role','img')
   img.src = `/src/img/${photographer.name}/${photographer.portrait}`
   img.classList.add('photographerMiniature')
   img.alt = photographer.name
@@ -35,41 +36,50 @@ const createPhotographerHeader = (photographer) => {
   return myDiv
 }
 const createPhotographerBody = (photographer) => {
-  const myDiv = document.createElement("div")
+  const myDiv = document.createElement('div')
   // CREATE TITLE
-  const title = document.createElement("a")
-  title.href=`/photographer.html?id=${photographer.id}`
+  const title = document.createElement('a')
+  title.setAttribute('role','link')
+  title.setAttribute('aria-label','photographer page')
+  title.href = `/photographer.html?id=${photographer.id}`
   title.innerHTML = photographer.name
 
   // CREATE CITY
-  const city = document.createElement("p")
-  city.classList.add("city")
+  const city = document.createElement('p')
+  city.setAttribute('role','text')
+  city.setAttribute('aria-label','city')
+  city.classList.add('city')
   city.innerHTML = `${photographer.city}, ${photographer.country}`
 
   // CREATE PRICE
-  const price = document.createElement("p")
-  price.classList.add("price")
+  const price = document.createElement('p')
+  price.setAttribute('role','text')
+  price.setAttribute('aria-label','price')
+  price.classList.add('price')
   price.innerHTML = `${photographer.price}€/jour`
 
   // CREATE TAGLINE
   const tagline = document.createElement('p')
+  tagline.setAttribute('role','text')
+  tagline.setAttribute('aria-label','tagline')
   tagline.innerHTML = photographer.tagline
 
-  //INSERT
+  // INSERT
   myDiv.append(title, city, price, tagline)
   return myDiv
-
 }
 const createPhotographerFooter = (photographer) => {
-  const myDiv = document.createElement("div")
-  myDiv.classList.add("flex")
+  const myDiv = document.createElement('div')
+  myDiv.classList.add('flex')
 
   photographer.tags.forEach(tag => {
-    const tagElem = document.createElement("p")
-    tagElem.innerHTML = "#" + tag
-    tagElem.classList.add("tag")
+    const tagElem = document.createElement('p')
+    tagElem.setAttribute('role','navigation')
+    tagElem.setAttribute('aria-label', 'filter photographers')
+    tagElem.innerHTML = '#' + tag
+    tagElem.classList.add('tag')
     myDiv.appendChild(tagElem)
-    tagElem.addEventListener("click",function(){
+    tagElem.addEventListener('click', function () {
       resetPhotographers()
       getPhotographersProfile(tag)
     })
@@ -77,13 +87,12 @@ const createPhotographerFooter = (photographer) => {
   return myDiv
 }
 const resetPhotographers = () => {
-  const photographersProfiles = document.getElementById("gridPhotographersProfiles")
+  const photographersProfiles = document.getElementById('gridPhotographersProfiles')
   content.removeChild(photographersProfiles)
-
 }
 
-try{
+try {
   getPhotographersProfile(filter)
-} catch{
+} catch {
   console.error("couldn't get data")
 }
