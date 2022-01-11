@@ -138,13 +138,16 @@ const singlePhotographer = (filter) => {
         title.innerHTML = media.alttext
         // likes
         fav.innerHTML = media.likes
-        console.log(document.activeElement)
-        if(fav == document.activeElement){
-          console.log(document.activeElement)
-        }
         fav.addEventListener('click',function(){
           fav.innerHTML++
           bottomModalLikes.innerHTML++
+        })
+        fav.addEventListener('keypress', function (e) {
+          e.preventDefault()
+          if(e.key === 'Enter'){
+            fav.innerHTML++
+            bottomModalLikes.innerHTML++
+          }
         })
         // insert text under img
         underImg.append(title, fav)

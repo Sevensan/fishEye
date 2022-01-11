@@ -247,4 +247,12 @@
     grid-template-areas:
     "text contact img";
   }
+  .btn-contact{
+    margin-top: 3rem;
+  }
+  #firstContent .imgContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
