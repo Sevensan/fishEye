@@ -1,4 +1,5 @@
 import { getData } from './getData.js'
+// filterbytag return data filtered by tag (string) in parameter
 export const filterByTag = async (filter) => {
   console.log(filter)
   let data = {}

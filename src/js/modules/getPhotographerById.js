@@ -1,5 +1,5 @@
 import { filterData } from './FilterMedia.js'
-
+// return wanted photographer object, take id (string) in parameter
 export const getPhotographerById = async (id) => {
   let getPhotographer = null
   await filterData().then(result => {

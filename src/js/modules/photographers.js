@@ -1,4 +1,4 @@
-// import { getData } from "./getData.js"
+// create photographers in homepage
 import { filterByTag } from './filterByTag.js'
 const filter = null
 const content = document.getElementById('content')
@@ -9,12 +9,14 @@ const getPhotographersProfile = (filter) => {
     myDiv.setAttribute('id', 'gridPhotographersProfiles')
     result.photographers.forEach(photographer => {
       if (content) {
+        // create photographer div with photographer object in parameter
         myDiv.appendChild(createDivForPhotographer(photographer))
         content.appendChild(myDiv)
       }
     })
   })
 }
+// creation of photographer div, divided in several functions : header, body, footer
 const createDivForPhotographer = (photographer) => {
   const container = document.createElement('div')
   container.classList.add('container')
@@ -86,11 +88,13 @@ const createPhotographerFooter = (photographer) => {
   })
   return myDiv
 }
+// clear page
 const resetPhotographers = () => {
   const photographersProfiles = document.getElementById('gridPhotographersProfiles')
   content.removeChild(photographersProfiles)
 }
 
+// call creation of photographers profiles
 try {
   getPhotographersProfile(filter)
 } catch {

@@ -1,7 +1,8 @@
 import { filterData } from './FilterMedia.js'
 import { getPhotographerById } from './getPhotographerById.js'
 window.filterData = filterData
-
+// display photos carousel
+// parameters : clicked media & list of photographer medias
 export const displayPhotograph = async (media, medias) => {
   await filterData()
   const carouselContainer = document.getElementById('carouselContainer')

@@ -1,4 +1,5 @@
 import { getData } from './getData.js'
+// filterData return the json data filtered by the string in parameter
 export const filterData = async (filter) => {
   let data = {}
   await getData().then(result => {

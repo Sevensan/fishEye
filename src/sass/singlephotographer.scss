@@ -98,18 +98,7 @@
       position: relative;
     }
   }
-  // #carouselHider{
-  //   display: none;
-  //   content: "";
-  //   width: 100vw;
-  //   height: 100vh;
-  //   background: white;
-  //   background-size: 100%;
-  //   position: absolute;
-  //   top: 0;
-  //   left: 0;
-  //   z-index: 0;
-  // }
+
   #toLeft, #toRight, #closeButton{
     position: absolute;
     font-size: 3rem;
@@ -170,7 +159,9 @@
     cursor: pointer;
   }
 }
-
+.photographLike{
+  cursor: pointer;
+}
 #modal{
   background: #DB8876;
   position: fixed;

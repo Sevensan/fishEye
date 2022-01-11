@@ -1,3 +1,5 @@
+// carousel navigation
+
 const toLeft = document.getElementById('toLeft')
 const toRight = document.getElementById('toRight')
 toLeft.setAttribute('tabindex','0')
@@ -24,10 +26,16 @@ toRight.addEventListener('keypress', function (e) {
 const toLeftNav = () => {
   if (carousel) {
     if (count <= 0) {
+      console.log('carousel client width : ', carousel.clientWidth)
+      console.log('window screen width : ', window.screen.width)
       count = carousel.clientWidth - window.screen.width
+      console.log('count : ', count)
       carousel.style.transform = 'translateX(-' + count + 'px)'
     } else {
+      console.log('carousel client width : ', carousel.clientWidth)
+      console.log('window screen width : ', window.screen.width)
       count -= window.screen.width
+      console.log('count : ', count)
       carousel.style.transform = 'translateX(-' + count + 'px)'
     }
   }
@@ -35,10 +43,15 @@ const toLeftNav = () => {
 const toRightNav = () => {
   if (carousel) {
     if (count >= carousel.clientWidth - window.screen.width) {
+      console.log('on est au bout du carousel')
       count = 0
       carousel.style.transform = 'translateX(-0px)'
     } else {
+      console.log('droite')
       count += window.screen.width
+      console.log('carousel client width : ', carousel.clientWidth)
+      console.log('window screen width : ', window.screen.width)
+      console.log('count : ', count)
       // (document.getElementsByClassName("imgCarousel")[0].width + 16)
       carousel.style.transform = 'translateX(-' + count + 'px)'
     }

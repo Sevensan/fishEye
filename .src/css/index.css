@@ -218,6 +218,10 @@
   cursor: pointer;
 }
 
+.photographLike {
+  cursor: pointer;
+}
+
 #modal {
   background: #DB8876;
   position: fixed;
