@@ -4,4 +4,7 @@ import {} from './modules/singlePhotographer.js'
 import { filterData } from './modules/FilterMedia.js'
 import {} from './modules/navigationGalery.js'
 import {} from './modules/submitForm.js'
+import {} from './factories/Photographer.js'
+import {} from './factories/PhotographerPage.js'
+import {} from './factories/PhotographerProfile.js'
 window.filterData = filterData

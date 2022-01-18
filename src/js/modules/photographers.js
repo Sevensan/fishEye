@@ -1,5 +1,6 @@
 // create photographers in homepage
 import { filterByTag } from './filterByTag.js'
+import { PhotographerProfile } from '../factories/PhotographerProfile.js'
 const filter = null
 const content = document.getElementById('content')
 
@@ -10,88 +11,24 @@ const getPhotographersProfile = (filter) => {
     result.photographers.forEach(photographer => {
       if (content) {
         // create photographer div with photographer object in parameter
-        myDiv.appendChild(createDivForPhotographer(photographer))
+        const photographerProfile = new PhotographerProfile(photographer)
+        // creation of photographer div, divided in several functions : header, body, footer
+        const createDivForPhotographer = () => {
+          const container = document.createElement('div')
+          container.classList.add('container')
+          const myDiv = document.createElement('div')
+          myDiv.appendChild(photographerProfile.createPhotographerProfileHeader())
+          myDiv.appendChild(photographerProfile.createPhotographerProfileBody())
+          container.appendChild(myDiv)
+          container.appendChild(photographerProfile.createPhotographerProfileFooter())
+          return container
+        }
+        console.log(photographerProfile)
+        myDiv.appendChild(createDivForPhotographer(photographerProfile))
         content.appendChild(myDiv)
       }
     })
   })
-}
-// creation of photographer div, divided in several functions : header, body, footer
-const createDivForPhotographer = (photographer) => {
-  const container = document.createElement('div')
-  container.classList.add('container')
-  const myDiv = document.createElement('div')
-  myDiv.appendChild(createPhotographerHeader(photographer))
-  myDiv.appendChild(createPhotographerBody(photographer))
-  container.appendChild(myDiv)
-  container.appendChild(createPhotographerFooter(photographer))
-  return container
-}
-const createPhotographerHeader = (photographer) => {
-  const myDiv = document.createElement('div')
-  const img = document.createElement('img')
-  img.setAttribute('role','img')
-  img.src = `/src/img/${photographer.name}/${photographer.portrait}`
-  img.classList.add('photographerMiniature')
-  img.alt = photographer.name
-  myDiv.appendChild(img)
-  return myDiv
-}
-const createPhotographerBody = (photographer) => {
-  const myDiv = document.createElement('div')
-  // CREATE TITLE
-  const title = document.createElement('a')
-  title.setAttribute('role','link')
-  title.setAttribute('aria-label','photographer page')
-  title.href = `/photographer.html?id=${photographer.id}`
-  title.innerHTML = photographer.name
-
-  // CREATE CITY
-  const city = document.createElement('p')
-  city.setAttribute('role','text')
-  city.setAttribute('aria-label','city')
-  city.classList.add('city')
-  city.innerHTML = `${photographer.city}, ${photographer.country}`
-
-  // CREATE PRICE
-  const price = document.createElement('p')
-  price.setAttribute('role','text')
-  price.setAttribute('aria-label','price')
-  price.classList.add('price')
-  price.innerHTML = `${photographer.price}€/jour`
-
-  // CREATE TAGLINE
-  const tagline = document.createElement('p')
-  tagline.setAttribute('role','text')
-  tagline.setAttribute('aria-label','tagline')
-  tagline.innerHTML = photographer.tagline
-
-  // INSERT
-  myDiv.append(title, city, price, tagline)
-  return myDiv
-}
-const createPhotographerFooter = (photographer) => {
-  const myDiv = document.createElement('div')
-  myDiv.classList.add('flex')
-
-  photographer.tags.forEach(tag => {
-    const tagElem = document.createElement('p')
-    tagElem.setAttribute('role','navigation')
-    tagElem.setAttribute('aria-label', 'filter photographers')
-    tagElem.innerHTML = '#' + tag
-    tagElem.classList.add('tag')
-    myDiv.appendChild(tagElem)
-    tagElem.addEventListener('click', function () {
-      resetPhotographers()
-      getPhotographersProfile(tag)
-    })
-  })
-  return myDiv
-}
-// clear page
-const resetPhotographers = () => {
-  const photographersProfiles = document.getElementById('gridPhotographersProfiles')
-  content.removeChild(photographersProfiles)
 }
 
 // call creation of photographers profiles
