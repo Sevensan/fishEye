@@ -37,8 +37,8 @@
 }
 
 .photographerMiniature {
-  width: 5rem;
-  height: 5rem;
+  width: 15rem;
+  height: 15rem;
   border-radius: 50%;
   object-fit: cover;
 }
@@ -202,9 +202,11 @@
 }
 #firstContent .textContainer {
   grid-area: text;
+  align-self: center;
 }
 #firstContent .btn-contact {
   grid-area: contact;
+  align-self: center;
   background: #901C1C;
   color: white;
   border-radius: 5px;
@@ -306,10 +308,6 @@
     grid-template-areas: "text contact img";
   }
 
-  .btn-contact {
-    margin-top: 3rem;
-  }
-
   #firstContent .imgContainer {
     display: flex;
     justify-content: center;
@@ -342,6 +340,10 @@ body {
 
 .align-items-center {
   align-items: center;
+}
+
+.text-center {
+  text-align: center !important;
 }
 
 a {

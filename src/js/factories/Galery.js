@@ -69,6 +69,7 @@ export class Galery{
         //img title
         title.innerHTML = media.alttext
         // likes
+        const bottomModalLikes = document.getElementById('modalBottom__likes')
         fav.innerHTML = media.likes
         fav.addEventListener('click',function(){
         fav.innerHTML++

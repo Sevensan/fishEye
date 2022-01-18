@@ -14,6 +14,8 @@ export class PhotographerProfile extends Photographer{
   }
   createPhotographerProfileHeader(){
     const myDiv = document.createElement('div')
+    myDiv.classList.add("flex")
+    myDiv.classList.add("justify-content-center")
     const img = document.createElement('img')
     img.setAttribute('role','img')
     img.src = `/src/img/${this.photographer_name}/${this.photographer_picture}`
@@ -24,6 +26,7 @@ export class PhotographerProfile extends Photographer{
   }
   createPhotographerProfileBody(){
     const myDiv = document.createElement('div')
+    myDiv.classList.add("text-center")
     // CREATE TITLE
     const title = document.createElement('a')
     title.setAttribute('role','link')
@@ -58,6 +61,7 @@ export class PhotographerProfile extends Photographer{
   createPhotographerProfileFooter(){
     const myDiv = document.createElement('div')
     myDiv.classList.add('flex')
+    myDiv.classList.add('justify-content-center')
 
     this.photographer_tags.forEach(tag => {
       const tagElem = document.createElement('p')

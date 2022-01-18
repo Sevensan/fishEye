@@ -143,9 +143,11 @@
   }
   .textContainer{
     grid-area: text;
+    align-self: center;
   }
   .btn-contact{
     grid-area: contact;
+    align-self: center;
     background: $primary;
     color: white;
     border-radius: 5px;
@@ -246,9 +248,6 @@
     display: grid;
     grid-template-areas:
     "text contact img";
-  }
-  .btn-contact{
-    margin-top: 3rem;
   }
   #firstContent .imgContainer{
     display: flex;

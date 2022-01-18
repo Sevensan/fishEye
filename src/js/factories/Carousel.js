@@ -13,8 +13,6 @@ export class Carousel{
   async displayPhotograph(){
     await filterData()
     const carouselContainer = document.getElementById('carouselContainer')
-    console.log(this.media)
-
     const listOfMedias = []
     listOfMedias.push(this.media)
     this.medias.map(item => {
